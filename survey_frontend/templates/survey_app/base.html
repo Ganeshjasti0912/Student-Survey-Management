@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Survey Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f9fdeb, #e6f5e5);
+    }
+
+    .navbar {
+      background-color: #006633;
+      padding: 15px 30px;
+      border-bottom: 3px solid #FFCC33;
+    }
+
+    .navbar .nav-link {
+      font-size: 1.05rem;
+      color: #FFCC33 !important;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .navbar .nav-link:hover {
+      color: white !important;
+    }
+
+    .navbar .nav-home {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .footer {
+      background: linear-gradient(to right, #004d26, #006633);
+      color: #FFCC33;
+      text-align: center;
+      padding: 20px 10px;
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      border-top: 2px solid #FFCC33;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+    <a class="nav-link nav-home text-warning fw-bold" href="{% url 'home' %}">🏠 Home</a>
+    <div class="d-flex gap-4">
+      <a class="nav-link text-warning fw-bold" href="{% url 'survey_form' %}">🎓 Student Survey</a>
+      <a class="nav-link text-warning fw-bold" href="{% url 'survey_list' %}">📋 Survey List</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  {% block content %}{% endblock %}
+</main>
+
+<div class="footer">
+  <p>George Mason University</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "survey_app/base.html" %}
+
+{% block content %}
+<div class="home-wrapper text-center" style="
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+">
+  <h1 class="display-5 fw-bold mb-4 text-success">Welcome to the CS Department</h1>
+  <p class="lead mb-5 text-secondary">Explore and participate in our student experience survey platform.</p>
+  <div class="d-flex flex-column flex-md-row gap-4 justify-content-center">
+    <a href="{% url 'survey_form' %}" class="btn btn-lg btn-success px-4 py-3 rounded-pill shadow-lg">✍ Student Survey</a>
+    <a href="{% url 'survey_list' %}" class="btn btn-lg btn-success px-4 py-3 rounded-pill shadow-lg">📊 List All Surveys</a>
+  </div>
+</div>
+{% endblock %}
