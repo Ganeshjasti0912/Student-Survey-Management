@@ -77,6 +77,7 @@ Common fixes in Spring Boot:
 Add @CrossOrigin(origins = "http://localhost:5173") on your controller, or
 
 Configure global CORS in Spring Security / WebMvcConfigurer.
+
 ---
 
 
