@@ -36,7 +36,7 @@ mvn spring-boot:run
 
 Backend runs at:
 
-http://localhost:8080
+- http://localhost:8080
 
 ## 2)Run Frontend (React)
 
@@ -88,6 +88,6 @@ Backend JAR build
 cd backend/survey_page
 mvn clean package
 
-Author
+## Author
 
 Ganesh Jasti
