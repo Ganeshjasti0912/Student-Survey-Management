@@ -1,0 +1,22 @@
+# React
+node_modules/
+dist/
+build/
+*.log
+
+# Spring / Java
+target/
+*.class
+*.jar
+*.war
+.idea/
+.vscode/
+
+# env
+.env
+
+# ignore big/old stuff
+*.sqlite3
+*.db
+*.mp4
+*.pdf

@@ -1,0 +1,13 @@
+:root {
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f3f3f3;
+  color: #222;
+}
+
+a {
+  color: inherit;
+}
