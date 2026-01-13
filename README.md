@@ -38,7 +38,7 @@ Backend runs at:
 
 http://localhost:8080
 
-##2)Run Frontend (React)
+## 2)Run Frontend (React)
 
 Open a new terminal from repo root:
 ```bash
@@ -49,24 +49,24 @@ npm run dev
 
 Frontend runs at:
 
-http://localhost:5173
+- http://localhost:5173
 
-API Configuration (Frontend → Backend)
+## API Configuration (Frontend → Backend)
 
 The frontend calls the backend at:
 
-http://localhost:8080
+- http://localhost:8080
 
 Update this file (for connecting backend server from frontend):
 
-frontend/src/services/surveyApi.js
+- `frontend/src/services/surveyApi.js`
 
 Example:
-
+```
 const API_URL = "http://localhost:8080";
+```
 
-
-CORS Note (If API calls fail)
+## CORS Note (If API calls fail)
 
 If the frontend cannot call the backend due to CORS, allow the frontend origin:
 
