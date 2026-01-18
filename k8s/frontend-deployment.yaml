@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-survey-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-survey-frontend
+  template:
+    metadata:
+      labels:
+        app: student-survey-frontend
+    spec:
+      containers:
+        - name: student-survey-frontend
+          image: ganesh0912/student-survey-frontend:1.1
+          ports:
+            - containerPort: 80
