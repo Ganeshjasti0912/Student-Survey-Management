@@ -14,9 +14,12 @@ target/
 
 # env
 .env
+.env.*
+
 
 # ignore big/old stuff
 *.sqlite3
 *.db
 *.mp4
 *.pdf
+

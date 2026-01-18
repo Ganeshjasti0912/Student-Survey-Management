@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8086/api/surveys";
+// const API_URL = "http://localhost:8086/api/surveys";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getSurveys() {
   const res = await fetch(API_URL);

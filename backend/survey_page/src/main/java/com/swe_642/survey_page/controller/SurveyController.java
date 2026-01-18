@@ -8,8 +8,9 @@ import com.swe_642.survey_page.model.SurveyDetails;
 import com.swe_642.survey_page.service.SurveyService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:5173"})
+// @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:5173"})
  // Angular default port and React
+ @CrossOrigin(origins = "*")
 @RequestMapping("/api/surveys")
 
 public class SurveyController {
