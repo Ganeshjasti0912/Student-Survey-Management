@@ -13,7 +13,7 @@ spec:
         app: student-survey-frontend
     spec:
       containers:
-        - name: student-survey-frontend
+        - name: frontend
           image: ganesh0912/student-survey-frontend:1.1
           ports:
             - containerPort: 80
