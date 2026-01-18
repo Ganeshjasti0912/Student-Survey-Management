@@ -22,7 +22,7 @@ export default function Home() {
             </p>
             <p>
               Here, you’ll find a collection of my projects, showcasing my expertise in{" "}
-              <b>programming, problem-solving, and software development</b>.
+              <b>programming, problem-solving, and software development(Full Stack)</b>.
             </p>
           </div>
         </div>
