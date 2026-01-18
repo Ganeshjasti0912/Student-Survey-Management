@@ -8,7 +8,10 @@ pipeline {
     FRONTEND_IMAGE  = 'ganesh0912/student-survey-frontend'
 
     KUBECONFIG      = '/var/lib/jenkins/.kube/config'
-    KUBE_FLAGS      = '--validate=false --insecure-skip-tls-verify=true'
+
+    // Flags
+    KUBE_APPLY_FLAGS = '--validate=false --insecure-skip-tls-verify=true'
+    KUBE_TLS_FLAGS   = '--insecure-skip-tls-verify=true'
 
     NAMESPACE       = 'default'
     DB_SECRET_NAME  = 'survey-db-secret'
@@ -50,10 +53,10 @@ pipeline {
         ]) {
           sh """
             set -e
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} create secret generic ${DB_SECRET_NAME} \
+            kubectl \$KUBE_APPLY_FLAGS -n ${NAMESPACE} create secret generic ${DB_SECRET_NAME} \
               --from-literal=DB_USERNAME="\$DB_USERNAME" \
               --from-literal=DB_PASSWORD="\$DB_PASSWORD" \
-              --dry-run=client -o yaml | kubectl \$KUBE_FLAGS -n ${NAMESPACE} apply -f -
+              --dry-run=client -o yaml | kubectl \$KUBE_APPLY_FLAGS -n ${NAMESPACE} apply -f -
           """
         }
       }
@@ -66,17 +69,16 @@ pipeline {
 
           sh """
             set -e
+            kubectl \$KUBE_APPLY_FLAGS -n ${NAMESPACE} apply -f k8s/backend-deployment.yaml
+            kubectl \$KUBE_APPLY_FLAGS -n ${NAMESPACE} apply -f k8s/backend-service.yaml
+            kubectl \$KUBE_APPLY_FLAGS -n ${NAMESPACE} apply -f k8s/frontend-deployment.yaml
+            kubectl \$KUBE_APPLY_FLAGS -n ${NAMESPACE} apply -f k8s/frontend-service.yaml
 
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} apply -f k8s/backend-deployment.yaml
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} apply -f k8s/backend-service.yaml
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} apply -f k8s/frontend-deployment.yaml
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} apply -f k8s/frontend-service.yaml
+            kubectl \$KUBE_TLS_FLAGS -n ${NAMESPACE} set image deployment/student-survey-backend backend=${BACKEND_IMAGE}:${tag}
+            kubectl \$KUBE_TLS_FLAGS -n ${NAMESPACE} set image deployment/student-survey-frontend frontend=${FRONTEND_IMAGE}:${tag}
 
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} set image deployment/student-survey-backend backend=${BACKEND_IMAGE}:${tag}
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} set image deployment/student-survey-frontend frontend=${FRONTEND_IMAGE}:${tag}
-
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} rollout status deployment/student-survey-backend
-            kubectl \$KUBE_FLAGS -n ${NAMESPACE} rollout status deployment/student-survey-frontend
+            kubectl \$KUBE_TLS_FLAGS -n ${NAMESPACE} rollout status deployment/student-survey-backend
+            kubectl \$KUBE_TLS_FLAGS -n ${NAMESPACE} rollout status deployment/student-survey-frontend
           """
         }
       }
